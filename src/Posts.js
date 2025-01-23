@@ -70,7 +70,6 @@ function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
                 </div>
             </div>
         </div>
-
     )
 }
 
