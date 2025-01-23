@@ -35,18 +35,32 @@ export default function Posts() {
                 />
             )}
         </div>
-    )
-
-
+    );
 }
 
 function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
     
     const [salvo, setSalvo] = React.useState("bookmark-outline");
-
+    const [curtido, setCurtido] = React.useState("heart-outline");
+    const [numeroCurtidas, setNumeroCurtidas] = React.useState(101523);
+    
     function salvarPost() {
         const iconeSalvarClicado = "bookmark";
         setSalvo(salvo === "bookmark-outline"  ? iconeSalvarClicado : "bookmark-outline");
+    }
+
+    function curtirPost() {
+        const postCurtido = (curtido === "heart-outline" ? "heart" : "heart-outline")
+        setCurtido(postCurtido);
+
+        setNumeroCurtidas(postCurtido === "heart" ? numeroCurtidas + 1 : numeroCurtidas - 1);
+    }
+
+    function curtirImagem() {
+        if (curtido === "heart-outline") {
+            setCurtido("heart");
+            setNumeroCurtidas(numeroCurtidas + 1);
+        }
     }
 
     return (
@@ -62,12 +76,12 @@ function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
             </div>
 
             <div class="conteudo">
-                <img src={imagemPost.imagem} alt={imagemPost.nome} />
+                <img onClick={curtirImagem} src={imagemPost.imagem} alt={imagemPost.nome} />
             </div>
             <div class="fundo">
                 <div class="acoes">
                     <div>
-                        {acoesPost.map(acao => <ion-icon name={acao} />)}
+                        {acoesPost.map(acao => <ion-icon onClick={acao === "heart-outline" ? curtirPost : null} name={acao === "heart-outline" ? curtido : acao} />)}
                     </div>
                     <div>
                         <ion-icon onClick={salvarPost} name={salvo}></ion-icon>
@@ -77,7 +91,7 @@ function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
                 <div class="curtidas">
                     <img src={curtidasPost.imagem} alt={curtidasPost.nome} />
                     <div class="texto">
-                        Curtido por <strong>respondeai</strong> e <strong>outras 101.523 pessoas</strong>
+                        Curtido por <strong>respondeai</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
                     </div>
                 </div>
             </div>
