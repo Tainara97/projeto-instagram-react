@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Posts() {
     const elementosPost = [
         {
@@ -34,9 +36,19 @@ export default function Posts() {
             )}
         </div>
     )
+
+
 }
 
 function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
+    
+    const [salvo, setSalvo] = React.useState("bookmark-outline");
+
+    function salvarPost() {
+        const iconeSalvarClicado = "bookmark";
+        setSalvo(salvo === "bookmark-outline"  ? iconeSalvarClicado : "bookmark-outline");
+    }
+
     return (
         <div class="post">
             <div class="topo">
@@ -58,7 +70,7 @@ function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
                         {acoesPost.map(acao => <ion-icon name={acao} />)}
                     </div>
                     <div>
-                        <ion-icon name="bookmark-outline"></ion-icon>
+                        <ion-icon onClick={salvarPost} name={salvo}></ion-icon>
                     </div>
                 </div>
 
