@@ -11,7 +11,7 @@ export default function Stories() {
     ];
 
     return (
-        <div class="stories">
+        <div className="stories">
             {stories.map((story, index) => <Story nome={story.nome} imagem={story.imagem} key={index}/>)}
         </div>
     )
@@ -19,11 +19,11 @@ export default function Stories() {
 
 function Story({nome, imagem}) {
     return (
-        <div class="story">
-            <div class="imagem">
+        <div className="story">
+            <div className="imagem">
                 <img src={imagem} alt={nome} />
             </div>
-            <div class="usuario">
+            <div className="usuario">
                 {nome}
             </div>
         </div>

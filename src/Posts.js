@@ -24,7 +24,7 @@ export default function Posts() {
     ];
 
     return (
-        <div class="posts">
+        <div className="posts">
             {elementosPost.map(({ usuario, imagemPost, acoesPost, curtidasPost }, index) =>
                 <Post
                     usuario={usuario}
@@ -64,22 +64,22 @@ function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
     }
 
     return (
-        <div class="post">
-            <div class="topo">
-                <div class="usuario">
+        <div className="post">
+            <div className="topo">
+                <div className="usuario">
                     <img src={usuario.imagem} alt={usuario.nome} />
                     {usuario.nome}
                 </div>
-                <div class="acoes">
+                <div className="acoes">
                     <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </div>
             </div>
 
-            <div class="conteudo">
+            <div className="conteudo">
                 <img onClick={curtirImagem} src={imagemPost.imagem} alt={imagemPost.nome} />
             </div>
-            <div class="fundo">
-                <div class="acoes">
+            <div className="fundo">
+                <div className="acoes">
                     <div>
                         {acoesPost.map(acao => <ion-icon onClick={acao === "heart-outline" ? curtirPost : null} name={acao === "heart-outline" ? curtido : acao} />)}
                     </div>
@@ -88,9 +88,9 @@ function Post({ usuario, imagemPost, acoesPost, curtidasPost, index }) {
                     </div>
                 </div>
 
-                <div class="curtidas">
+                <div className="curtidas">
                     <img src={curtidasPost.imagem} alt={curtidasPost.nome} />
-                    <div class="texto">
+                    <div className="texto">
                         Curtido por <strong>respondeai</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
                     </div>
                 </div>
